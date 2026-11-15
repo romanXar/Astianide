@@ -1,0 +1,36 @@
+section_string
+"Result: %lld\n"
+"Time: %lld\n"
+
+section_code
+
+extern_call_ret 1 0 var_i 2
+
+mov_ii_r0c 0
+
+lda_r1r2 .rep
+lda_xmm0 .abc
+lda_xmm1 .abc1
+
+goto .check
+
+.rep
+
+inc_r0
+inc_r0
+
+inc_r0_xmm0
+.abc
+
+inc_r0_xmm1
+.abc1
+
+.check
+if_le_ii_r0c .rep 100000000
+
+
+extern_call_ret 1 0 var_i 4
+sub_iii_vvv 5 4 2
+extern_call 0 2 lit_s 0 r0_i 0
+extern_call 0 2 lit_s 1 var_i 5
+eof

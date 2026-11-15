@@ -1,0 +1,28 @@
+section_string
+"Result: %lld\n"
+"Time: %lld\n"
+
+section_code
+
+extern_call_ret 1 0 var_i 2
+
+mov_ii_vc 3 30
+call .fib 4 11
+
+extern_call_ret 1 0 var_i 4
+sub_iii_vvv 5 4 2
+extern_call 0 2 lit_s 0 var_i 11
+extern_call 0 2 lit_s 1 var_i 5
+eof
+
+.fib
+if_le_ii_vc .recursive -1 1
+ret -1
+
+.recursive
+sub_iii_vvc 3 -1 1
+call .fib 4 0
+sub_iii_vvc 3 -1 2
+call .fib 4 1
+add_iii_vvv 2 1 0
+ret 2
